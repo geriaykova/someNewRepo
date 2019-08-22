@@ -12,7 +12,7 @@ import com.example.app.ws.ui.model.response.UserRest;
 import com.example.app.ws.userservice.IUserService;
 
 @Service
-public class UserServiceImplementation implements IUserService {
+public class UserServiceImpl implements IUserService {
 
 	Map<String, UserRest> users;
 	Utils utils;
@@ -26,21 +26,20 @@ public class UserServiceImplementation implements IUserService {
 		this.users = users;
 	}
 
-	public UserServiceImplementation() {};
+	public UserServiceImpl() {};
 
 	@Autowired
-	public UserServiceImplementation(Utils utils) {
+	public UserServiceImpl(Utils utils) {
 		this.utils = utils;
 	}
 
 	@Override
 	public UserRest createUser(UserDetailsRequestModel userDetails) {
 		UserRest returnValue = new UserRest();
+
 		returnValue.setFirstName(userDetails.getFirstName());
 		returnValue.setLastName(userDetails.getLastName());
 		returnValue.setEmail(userDetails.getEmail());
-		// temporary store User Record so it can be updated
-		// return "createUser was called"; -> does not accept any arguments
 
 		String userId = utils.generateUserId();
 		returnValue.setUserId(userId);
