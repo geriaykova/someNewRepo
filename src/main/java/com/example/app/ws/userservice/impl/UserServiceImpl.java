@@ -14,17 +14,17 @@ import com.example.app.ws.userservice.IUserService;
 @Service
 public class UserServiceImpl implements IUserService {
 
-	Map<String, UserRest> users;
+//	Map<String, UserRest> users;
 	Utils utils;
-	
 
-	public Map<String, UserRest> getUsers() {
-		return users;
-	}
 
-	public void setUsers(Map<String, UserRest> users) {
-		this.users = users;
-	}
+//	public Map<String, UserRest> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(Map<String, UserRest> users) {
+//		this.users = users;
+//	}
 
 	public UserServiceImpl() {};
 
@@ -34,20 +34,14 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserRest createUser(UserDetailsRequestModel userDetails) {
+	public UserRest createUser(UserRest userRest) {
 		UserRest returnValue = new UserRest();
 
-		returnValue.setFirstName(userDetails.getFirstName());
-		returnValue.setLastName(userDetails.getLastName());
-		returnValue.setEmail(userDetails.getEmail());
-
-		String userId = utils.generateUserId();
-		returnValue.setUserId(userId);
-
-		if (users == null)
-			users = new HashMap<>();
-
-		users.put(userId, returnValue);
+		returnValue.setFirstName(userRest.getFirstName());
+		returnValue.setLastName(userRest.getLastName());
+		returnValue.setEmail(userRest.getEmail());
+//		returnValue.setPassword(userRest.getPassword());
+		returnValue.setUserId(userRest.getUserId());
 
 		return returnValue;
 

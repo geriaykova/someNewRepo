@@ -2,7 +2,7 @@ package com.example.app.ws.ui.model.request;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+//TODO: pogledni go i tova
 public class UpdateUserDetailsRequestModel {
 	@NotNull(message="First name cannot be null")
 	@Size(min=2, message = "Valid name must be at least 2 characters long")

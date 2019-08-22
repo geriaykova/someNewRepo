@@ -1,12 +1,21 @@
 package com.example.app.ws.ui.model.response;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@EntityListeners(AuditingEntityListener.class)
+@Entity
+@Table(name = "people")
 public class UserRest {
 
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String userId;
+	private String password;
+	private long userId;
 
+	@Column(name = "firstname", nullable = false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -15,6 +24,7 @@ public class UserRest {
 		this.firstName = firstName;
 	}
 
+	@Column(name = "lastname", nullable = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -23,6 +33,7 @@ public class UserRest {
 		this.lastName = lastName;
 	}
 
+	@Column(name = "email", nullable = false)
 	public String getEmail() {
 		return email;
 	}
@@ -31,11 +42,23 @@ public class UserRest {
 		this.email = email;
 	}
 
-	public String getUserId() {
+	@Column(name = "password")
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
