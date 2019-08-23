@@ -1,12 +1,18 @@
 package com.example.app.ws.userservice;
 
-import java.util.Map;
+import com.example.app.ws.ui.model.request.UserRequestModel;
+import com.example.app.ws.ui.model.request.UserUpdateModel;
+import com.example.app.ws.ui.model.response.UserResponseModel;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.app.ws.ui.model.request.UserDetailsRequestModel;
-import com.example.app.ws.ui.model.response.UserRest;
+import java.util.List;
 
 public interface IUserService {
-	UserRest createUser(UserRest userRest);
+	List<UserResponseModel> getUsers();
+	UserResponseModel getUserByID(long userId);
+	UserResponseModel createUser(UserRequestModel userRequest);
+	UserResponseModel updateUser(long userId, UserUpdateModel userUpdateModel);
+	UserResponseModel deleteUser(long userId);
 
 
 }

@@ -42,39 +42,6 @@ public class AppExceptionsHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<> (errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	/*
-	//Handles specific exception & returns custom exception body with contents of the ErrorMessage class
-	@ExceptionHandler(value = {NullPointerException.class})
-	public ResponseEntity<Object> handleNullPointerException(NullPointerException ex, WebRequest request) {
-		
-		String errorMessageDescription = ex.getLocalizedMessage();
-		
-		if (errorMessageDescription == null) {
-			errorMessageDescription = ex.toString();
-		}
-		
-		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
-		
-		return new ResponseEntity<> (errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	*/
-
-	/*
-	//Handles custom exception & returns custom exception body with contents of the ErrorMessage class
-	@ExceptionHandler(value = {UserServiceException.class})
-	public ResponseEntity<Object> handleUserServiceException(UserServiceException ex, WebRequest request) {
-		
-		String errorMessageDescription = ex.getLocalizedMessage();
-		
-		if (errorMessageDescription == null) {
-			errorMessageDescription = ex.toString();
-		}
-		
-		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
-		
-		return new ResponseEntity<> (errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	*/
 	
 	//Handles specific exceptions in 1 method & returns custom exception body with contents of the ErrorMessage class
 		@ExceptionHandler(value = {NullPointerException.class, UserServiceException.class})
